@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpmhx255cp7nw"]
+
+[ext_resource type="Texture2D" uid="uid://blia0kvkhp82u" path="res://assets/Groningen,_toren_van_de_Aa-kerk_vanaf_de_Visserbrug_IMG_4256_2023-04-02_18.57.jpg" id="1_0qkrn"]
+[ext_resource type="Script" path="res://main.gd" id="1_6cukx"]
+[ext_resource type="PackedScene" uid="uid://dslljyn0t2nft" path="res://objects/eierbal.tscn" id="3_5lt1k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ms082"]
+font_size = 64
+
+[node name="Main" type="Node"]
+script = ExtResource("1_6cukx")
+eierbal_scene = ExtResource("3_5lt1k")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(217, 255)
+texture = ExtResource("1_0qkrn")
+region_rect = Rect2(538, 9, 804, 1149)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Eierballen" type="Node" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 57.0
+offset_bottom = 104.0
+text = "   0"
+label_settings = SubResource("LabelSettings_ms082")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
